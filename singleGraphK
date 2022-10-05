@@ -1,0 +1,26 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     |
+    \\  /    A nd           | Web:      www.OpenFOAM.org
+     \\/     M anipulation  |
+-------------------------------------------------------------------------------
+Description
+   
+\*---------------------------------------------------------------------------*/
+
+start   (0  0.049 0);
+end     (0 0 0);
+fields  (k);
+
+#includeEtc "caseDicts/postProcessing/graphs/sampleDict.cfg"
+ 
+// Override settings here, e.g. 
+setConfig {
+
+	type lineCell; //Old use is midPoint
+	axis y;
+}
+ 
+// Must be last entry
+#includeEtc "caseDicts/postProcessing/graphs/graph.cfg"

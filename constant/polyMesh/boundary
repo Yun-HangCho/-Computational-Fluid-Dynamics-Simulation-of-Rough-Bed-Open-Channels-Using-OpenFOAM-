@@ -1,0 +1,77 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  7
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      binary;
+    class       polyBoundaryMesh;
+    location    "constant/polyMesh";
+    object      boundary;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+7
+(
+    minx
+    {
+        type            cyclic;
+        inGroups        List<word> 1(cyclic);
+        nFaces          8300;
+        startFace       7681584;
+        matchTolerance  0.0001;
+        transform       unknown;
+        neighbourPatch  maxx;
+    }
+    maxx
+    {
+        type            cyclic;
+        inGroups        List<word> 1(cyclic);
+        nFaces          8300;
+        startFace       7689884;
+        matchTolerance  0.0001;
+        transform       unknown;
+        neighbourPatch  minx;
+    }
+    miny
+    {
+        type            wall;
+        inGroups        List<word> 1(wall);
+        nFaces          51344;
+        startFace       7698184;
+    }
+    maxy
+    {
+        type            symmetry;
+        inGroups        List<word> 1(symmetry);
+        nFaces          51792;
+        startFace       7749528;
+    }
+    minz
+    {
+        type            symmetry;
+        inGroups        List<word> 1(symmetry);
+        nFaces          15600;
+        startFace       7801320;
+    }
+    maxz
+    {
+        type            symmetry;
+        inGroups        List<word> 1(symmetry);
+        nFaces          15600;
+        startFace       7816920;
+    }
+    semi_sphere
+    {
+        type            wall;
+        inGroups        List<word> 1(wall);
+        nFaces          800;
+        startFace       7832520;
+    }
+)
+
+// ************************************************************************* //

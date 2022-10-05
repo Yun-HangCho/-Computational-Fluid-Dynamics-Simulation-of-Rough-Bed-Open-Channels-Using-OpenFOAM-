@@ -1,0 +1,133 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  6                                     |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      blockMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+convertToMeters 1;
+
+xmin -1;
+xmax  1;
+ymin -0.25;
+ymax  0.25;
+zmin  0 ;
+zmax  0.049;
+
+vertices        
+(
+    ($xmin  $ymin  $zmin)
+    ($xmax  $ymin  $zmin)
+    ($xmax  $ymax  $zmin)
+    ($xmin  $ymax  $zmin)
+    ($xmin  $ymin  $zmax)
+    ($xmax  $ymin  $zmax)
+    ($xmax  $ymax  $zmax)
+    ($xmin  $ymax  $zmax)
+);
+
+blocks          
+(
+    hex (0 1 2 3 4 5 6 7) (50 30 20) simpleGrading (1 1 1)
+);
+
+edges           
+(
+);
+
+/*
+patches         
+(
+    patch minx 
+    (
+        (0 3 7 4)
+    )
+    patch maxx
+    (
+        (1 2 6 5)
+    )
+    patch miny
+    (
+        (0 4 5 1)
+    )
+    patch maxy
+    (
+        (3 2 6 7)
+    )
+    patch minz
+    (
+        (0 3 2 1)
+    )
+    patch maxz
+    (
+        (4 5 6 7)
+    )
+);
+*/
+
+boundary
+(
+    minx
+    {
+        type patch;
+        faces
+        (
+            (0 3 7 4)
+        );
+    }
+    maxx
+    {
+        type patch;
+        faces
+        (
+            (1 2 6 5)
+        );
+    }
+    miny
+    {
+        type symmetry;
+        faces
+        (
+            (0 4 5 1)
+        );
+    }
+    maxy
+    {
+        type symmetry;
+        faces
+        (
+            (3 2 6 7)
+        );
+    }
+    minz
+    {
+        type wall;
+        faces
+        (
+            (0 3 2 1)
+        );
+    }
+    maxz
+    {
+        type symmetry;
+        faces
+        (
+            (4 5 6 7)
+        );
+    }
+);
+
+mergePatchPairs 
+(
+);
+
+// ************************************************************************* //

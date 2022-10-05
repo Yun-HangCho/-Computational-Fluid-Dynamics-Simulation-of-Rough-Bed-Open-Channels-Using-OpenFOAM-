@@ -1,0 +1,23 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  8
+     \\/     M anipulation  |
+-------------------------------------------------------------------------------
+Description
+    Calculates specified turbulence fields and stores it on the database.
+
+\*---------------------------------------------------------------------------*/
+
+type            turbulenceFields;
+libs            ("libfieldFunctionObjects.so");
+
+
+fields          (k I epsilon omega R nuTilda L);
+//for incompressible, can also collect nut, nuEff and devReff
+
+executeControl  writeTime;
+writeControl    writeTime;
+
+// ************************************************************************* //
